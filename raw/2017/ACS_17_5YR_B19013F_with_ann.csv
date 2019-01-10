@@ -1,0 +1,11 @@
+GEO.id,GEO.id2,GEO.display-label,HD01_VD01,HD02_VD01
+Id,Id2,Geography,Estimate; Median household income in the past 12 months (in 2017 inflation-adjusted dollars),Margin of Error; Median household income in the past 12 months (in 2017 inflation-adjusted dollars)
+0400000US09,09,Connecticut,39461,1621
+0500000US09001,09001,"Fairfield County, Connecticut",47228,2339
+0500000US09003,09003,"Hartford County, Connecticut",34437,2469
+0500000US09005,09005,"Litchfield County, Connecticut",47684,15232
+0500000US09007,09007,"Middlesex County, Connecticut",62691,54512
+0500000US09009,09009,"New Haven County, Connecticut",37057,2762
+0500000US09011,09011,"New London County, Connecticut",35930,1822
+0500000US09013,09013,"Tolland County, Connecticut",51429,29397
+0500000US09015,09015,"Windham County, Connecticut",29779,20488
