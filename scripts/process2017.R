@@ -18,9 +18,9 @@ path_to_raw_data <- (paste0(getwd(), "/", raw_location))
 x2017_files <- dir(paste0(path_to_raw_data,"/2017"), recursive=F, pattern = "ACS") 
 
 #process 2017 data
-races_for_2017 <- c("White Alone", "Black or African American Alone", "American Indian and Alaska Native Alone", 
+races_for_2017 <- c("All", "White Alone", "Black or African American Alone", "American Indian and Alaska Native Alone", 
                     "Asian Alone", "Native Hawaiian and Other Pacific Islander", "Some Other Race Alone", 
-                    "Two or More Races", "White Alone Not Hispanic or Latino", "Hispanic or Latino", "All")
+                    "Two or More Races", "White Alone Not Hispanic or Latino", "Hispanic or Latino")
 x2017_data <- data.frame(stringsAsFactors = FALSE)
 for (i in 1:length(x2017_files)) {
   data <- read.acs(paste0(path_to_raw_data, "/2017/", x2017_files[i]), endyear=2017, span=5)
@@ -97,7 +97,8 @@ names(merge)[names(merge) == "FIPS.x"] <- "FIPS"
 names(merge)[names(merge) == "County.x"] <- "County"
 
 colnames(previous_data) <- colnames(merge)
-upto2017 <- rbind(previous_data, merge)
+#upto2017 <- rbind(previous_data, merge)
+upto2017 <- merge
 
 upto2017$Value <-  round(upto2017$Value, 2)
 upto2017$FIPS <- ToNumeric(upto2017$FIPS)
@@ -105,4 +106,14 @@ upto2017$FIPS <- ToNumeric(upto2017$FIPS)
 upto2017 <- upto2017 %>% 
   arrange(County, Year, `Race/Ethnicity`, `Measure Type`, Variable)
 
-WriteDFToTable(upto2017, "median-household-income-county-2017.csv")
+#WriteDFToTable(upto2017, "median-household-income-county-2017.csv")
+
+write.table(
+  upto2017,
+  file.path("data", "median-household-income-county-2017-only.csv"),
+  sep = ",",
+  row.names = F,
+  na = "-9999"
+)
+
+
